@@ -1,5 +1,5 @@
-
 import {HiUserCircle} from 'react-icons/hi';
+
 import {BiSearchAlt2 } from 'react-icons/bi';
 import {BiChevronDown} from "react-icons/bi";
 import {FaShoppingCart} from "react-icons/fa"
@@ -20,9 +20,10 @@ PopoverHeader,
 PopoverBody,
 PopoverArrow,
 PopoverCloseButton,
-Button,
+
 
 } from '@chakra-ui/react'
+import LoginButton from './LoginButton';
 
 
 
@@ -38,26 +39,17 @@ Button,
           <Box>
             <InputGroup>
             <Input placeholder='Search for products, brands and more ' style={{color:"black",width:"600px",backgroundColor:"white",display:'flex'}}rounded={"none"} />
-         
-
       <InputRightElement>
          <BiSearchAlt2/>
       </InputRightElement>
             </InputGroup>
           </Box>
-          <Popover trigger="hover" >
-  <PopoverTrigger>
-    <Button rounded={"none"} style={{color:"#2874f0",backgroundColor:"white",border:"1px solid #dbdbdb",height:"32px"}}>LOGIN</Button >
-  </PopoverTrigger>
-  <PopoverContent zIndex={4}>
-    <PopoverHeader fontWeight='semibold' marginLeft={"30px"}>New customar ? <Link>Sign up</Link></PopoverHeader>
-    <PopoverArrow />
-    <PopoverCloseButton />
-    <PopoverBody><HiUserCircle/> My Profile</PopoverBody>
-    <PopoverArrow />
+          
 
-  </PopoverContent>
-</Popover>
+<LoginButton/>
+
+
+
 <Box color={"white"} fontSize={"18px"}>Become a Seller</Box>
         <Popover trigger="hover" >
   <PopoverTrigger>
