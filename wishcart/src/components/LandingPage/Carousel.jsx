@@ -1,6 +1,7 @@
 import React from 'react'
 import Carousel from "react-multi-carousel"
 import 'react-multi-carousel/lib/styles.css';
+import { Box } from '@chakra-ui/react';
 
 const bannerData = [
     { id: 1, url: 'https://rukminim1.flixcart.com/flap/3376/560/image/d117a62eb5fbb8e1.jpg?q=50' },
@@ -40,10 +41,14 @@ const Banner = () => {
     >
   {
     bannerData.map(data=>(
-    <img key={data.id} style={{width:"100%"}} src={data.url} alt="banner" />
+      <Box key={data.id} style={{boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",width:"100%"}}>
+ <img key={data.id} style={{width:"100%"}} src={data.url} alt="banner" />
+      </Box>
+   
     ))
   }
 </Carousel>
+
   )
 }
 
