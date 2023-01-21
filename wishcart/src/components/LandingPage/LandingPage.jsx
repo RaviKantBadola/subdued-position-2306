@@ -7,6 +7,9 @@ import Cart1 from './Cart1'
 import Cart2 from './Cart2'
 import Cart4 from './Cart4'
 import Cart5 from './Cart5'
+import Cart6 from './Cart6'
+import BeforeFooter from './BeforeFooter'
+import Footer from './Footer'
 function LandingPage(){
   return (
    <>
@@ -19,6 +22,11 @@ function LandingPage(){
    <Cart2/>
    <Cart4/>
    <Cart5/>
+   <Cart6/>
+
+   <BeforeFooter/>
+   <Footer/>
+   
    </>
     
  
