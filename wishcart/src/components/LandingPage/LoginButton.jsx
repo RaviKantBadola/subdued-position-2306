@@ -3,7 +3,7 @@ import React from 'react'
 import {
     Button
     } from '@chakra-ui/react'
-import LoginDialog from './LandingPage/LoginDialog'
+import LoginDialog from './LoginDialog'
 
 const LoginButton = () => {
   return (

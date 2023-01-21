@@ -1,6 +1,6 @@
 import Carousel from "react-multi-carousel";
 import axios from "axios"
-import { Box,Flex,Text } from "@chakra-ui/react";
+import { Box,Text } from "@chakra-ui/react";
 import "react-multi-carousel/lib/styles.css";
 import {useState,useEffect} from "react"
 import React from 'react'
@@ -11,7 +11,7 @@ const responsive = {
   
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 6
+      items: 4
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
@@ -26,7 +26,7 @@ const Cart5 = () => {
 const [data,setData]=useState([])
 
 useEffect(()=>{
-    axios.get("https://different-bell-bottoms-fox.cyclic.app/wishcart").then(res=>{
+    axios.get("https://different-bell-bottoms-fox.cyclic.app/men").then(res=>{
      const data = res.data
      console.log(data)
      setData(data)
@@ -34,7 +34,7 @@ useEffect(()=>{
 },[])
   return (
     <>
-    <Box display={"flex"}  mt="20px" box-shadow= "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px" p='1'  width={"99%"}  margin={"50px 0 0 0"} >
+    <Box display={"flex"}  mt="20px" boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px" p='1'  width={"100%"}  margin={"auto"} >
 
     <Box width={"15%"} marginTop={"10px"} marginLeft={"40px"}>
                 <Text paddingTop={{base:"120px", md:"120px", lg:"70px"}} fontSize={{ base: '10px', md: '20px', lg: '30px' }}> Fashion Top Deals</Text>
@@ -44,7 +44,7 @@ useEffect(()=>{
                         <NavLink to='./products/fashion'>VIEW ALL </NavLink>
                     </Button>
                 </WrapItem>
-                <img  pt="15px" src="https://rukminim1.flixcart.com/fk-p-flap/278/278/image/31d46a8fd93eeedd.jpg?q=90" alt="fg" />
+                <img  pt="15px" src="https://images.unsplash.com/photo-1607082349566-187342175e2f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZGlzY291bnR8ZW58MHx8MHx8&w=1000&q=80" alt="fg" />
 
             </Box>
 
@@ -65,22 +65,28 @@ useEffect(()=>{
        containerClass="carousel-container"
          >
        {
-         data.filter(item=>item.category_name==="fashion").map(item=>(
-            <Box  m="5px" alignItems="center" textAlign={"center"} width="200px" box-shadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"  >
-                        <img width={"140px"} height="150px" src={item.image} alt="" style={{marginLeft:"auto",marginRight:"auto"}} />
-                        <Text fontWeight="500" fontSize={{base:"13px", md:"12px", lg:"14px"}}> {item.description}</Text>
-                       <Flex textAlign={"center"} justifyContent={'space-around'} w="50%" m="auto">
-                         <Text fontSize={"15px"} fontWeight={"600"} >   ₹ {item.new_price}</Text>
-                         <Text  fontSize={"12px"}><del> ₹ {item.old_price}</del></Text>
-                       </Flex>
-                        <Text fontWeight={"medium"} mt="8px" fontSize={{base:"13px", md:"14px", lg:"15px"}} color={"green"}>Max {item.discount} % Off</Text>
-                    </Box>
+         data.map(item=>(
+          
+          
+      <Box key={item.imageUrl[0]}  m="5px" alignItems="center" textAlign={"center"} >
+        <Box height={"270px"} width={"270px"} overflow="hidden" paddingTop={"20px"} style={{marginLeft:"auto",marginRight:"auto"}} >
+        <img width={"100%"} src={item.imageUrl[0]} alt="" />
+        </Box>
+         
+          <Text fontWeight="600" p="5px" fontSize={{base:"13px", md:"12px", lg:"14px"}}> {item.Title}</Text>
+          <Text  mt="8px" fontSize={{base:"13px", md:"14px", lg:"15px"}} color={"green"}>20 - {item.price.Discount} % Off</Text>
+          <Text fontSize={"13px"} color="silver"> {item.Brand}</Text>
+      </Box>
         
          ))
        }
      </Carousel> 
          </Box>
        {/* carousel end  */}
+
+       <Box display={{base:'none' , md:'block' , lg:'block'}} w={{base:'0px', md:'30%', lg:"20%"}} width={"15%"} >
+    <img src="https://rukminim1.flixcart.com/fk-p-flap/464/708/image/74eaeafbf1a19432.jpeg?q=70"  alt="ad" style={{width:217}}/>
+   </Box>
        </Box>
     </>
    

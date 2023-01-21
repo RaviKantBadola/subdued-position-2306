@@ -23,7 +23,7 @@ PopoverCloseButton,
 
 
 } from '@chakra-ui/react'
-import LoginButton from './LoginButton';
+import LoginButton from './LandingPage/LoginButton';
 
 
 
