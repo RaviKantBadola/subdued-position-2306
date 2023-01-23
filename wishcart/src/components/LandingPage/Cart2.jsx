@@ -5,7 +5,7 @@ import { Box,Flex,Text } from "@chakra-ui/react";
 import "react-multi-carousel/lib/styles.css";
 import {useState,useEffect} from "react"
 import React from 'react'
-import { NavLink,Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { WrapItem } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
 const responsive = {
@@ -67,9 +67,9 @@ useEffect(()=>{
          >
        {
          data.filter(item=>item.category_name==="fashion").map(item=>(
-         
+          <NavLink to={`/products/${item.item_id}`} key={Date.now()+item.item_id+Math.random()}>
             <Box  m="5px" alignItems="center" textAlign={"center"} width="200px" backgroundColor={"white"}  >
-              <Link to={'/product/id'} />
+          
                         <img width={"140px"} height="150px" src={item.image} alt="" style={{marginLeft:"auto",marginRight:"auto"}} />
                         <Text fontWeight="500" fontSize={{base:"13px", md:"12px", lg:"14px"}}> {item.description}</Text>
                        <Flex textAlign={"center"} justifyContent={'space-around'} w="50%" m="auto">
@@ -78,7 +78,7 @@ useEffect(()=>{
                        </Flex>
                         <Text fontWeight={"medium"} mt="8px" fontSize={{base:"13px", md:"14px", lg:"15px"}} color={"green"}>Max {item.discount} % Off</Text>
                     </Box>
-        
+                    </NavLink>
          ))
        }
      </Carousel> 

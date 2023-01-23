@@ -67,7 +67,7 @@ useEffect(()=>{
        {
          data.map(item=>(
           
-          
+          <NavLink to={`/products/${item.item_id}`} key={Date.now()+item.item_id+Math.random()}>
       <Box key={item.imageUrl[0]}  m="5px" alignItems="center" textAlign={"center"} >
         <Box height={"270px"} width={"270px"} overflow="hidden" paddingTop={"20px"} style={{marginLeft:"auto",marginRight:"auto"}} >
         <img width={"100%"} src={item.imageUrl[0]} alt="" />
@@ -77,7 +77,7 @@ useEffect(()=>{
           <Text  mt="8px" fontSize={{base:"13px", md:"14px", lg:"15px"}} color={"green"}>20 - {item.price.Discount} % Off</Text>
           <Text fontSize={"13px"} color="silver"> {item.Brand}</Text>
       </Box>
-        
+        </NavLink>
          ))
        }
      </Carousel> 

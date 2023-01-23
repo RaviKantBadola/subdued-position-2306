@@ -1,7 +1,8 @@
 import {Modal,ModalContent,Button,useDisclosure,Input,Box} from "@chakra-ui/react";
-import { useState } from "react";
-
-import Signup from "./Signup";
+import {  useNavigate } from "react-router-dom";
+import {useState,useContext} from "react";
+import { AuthContext } from "../../context/AuthContext";
+import Signup from "../../Route/Signup";
 const accountinitialvalues={
     login:{
         view:"login",
@@ -16,7 +17,38 @@ const accountinitialvalues={
     }
 }
   function LoginDialog() {
-   
+  
+      const navigate = useNavigate();
+    
+      const obj = {
+        email:"",
+        password:""
+      }
+    
+      const {loginUser} = useContext(AuthContext);
+    
+    const [formData,setFormData] = useState(obj)
+    const {email,password} = formData;
+    
+    const handleChange = (e)=>{
+      setFormData({...formData,[e.target.name]:e.target.value})
+    }
+    
+    const handleSubmit = (event)=>{
+      event.preventDefault();
+    
+    
+    if(loginUser(formData)===true){
+      setFormData(obj);
+      navigate("/");
+      
+    }
+    else if(loginUser(formData)===false){
+      alert("wrong credentials");
+      setFormData(obj);
+    }
+    
+    }
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [account,toggleAccount]=useState(accountinitialvalues.login)
   
@@ -46,10 +78,10 @@ const handleClose=()=>{
         {/* login form------- */}
           { account.view==="login" ?
           <Box style={{height:"100%",width:"60%",padding:"40px 35px",textAlign:"center"}}>
-          <Input variant="flushed" placeholder="Enter Email/Mobile Number" style={{marginTop:20}} isRequired/>
-          <Input variant="flushed" placeholder="Enter Password" style={{marginTop:20}} isRequired/>
+          <Input variant="flushed" placeholder="Enter Email/Mobile Number" style={{marginTop:20}} isRequired type="email" name="email" value={email} onChange={handleChange}/>
+          <Input variant="flushed" placeholder="Enter Password" style={{marginTop:20}} isRequired  type="password" name="password" value={password} onChange={handleChange} />
            <p style={{marginTop:20,fontSize:12,color:878787}}>By continuing, you agree to Flipkart's Terms of Use and Privacy Policy.</p>
-            <Button style={{marginTop:20,background:"#FB641B",color:"#fff",width:200}}>Login</Button>
+            <Button style={{marginTop:20,background:"#FB641B",color:"#fff",width:200}}  onClick={handleSubmit} >Login</Button>
             <p style={{marginTop:20,fontSize:12,color:878787}}>OR</p>
             <Button style={{marginTop:20,background:"#FB641B",color:"#fff",width:200}}>Request OTP</Button>
             <p style={{marginTop:20,padding:"5px",fontSize:14,color:"#2874f0"}} onClick={()=>toggleSignup()}>New to Flipkart? Create an account</p>
