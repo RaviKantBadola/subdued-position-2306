@@ -66,9 +66,10 @@ useEffect(()=>{
          >
        {
          data.filter(item=>item.category_name==="electronics").map(item=>(
+          <NavLink to={`/products/${item.item_id}`} key={Date.now()+item.item_id+Math.random()}>
             <Box m="5px" alignItems="center" textAlign={"center"}>
                         
-        <img maxWidth="180px" h="200px" m="auto" _hover={{ transform: "scale(1.1)", transition: "400ms" }} p="10px" src={item.image} alt="" style={{marginLeft:"auto",marginRight:"auto"}} />
+        <img  h="200px" m="auto" _hover={{ transform: "scale(1.1)", transition: "400ms" }} p="10px" src={item.image} alt="" style={{marginLeft:"auto",marginRight:"auto"}} />
        
                         <Text fontWeight="500" fontSize={{base:"13px", md:"12px", lg:"14px"}}> {item.description}</Text>
                        <Flex textAlign={"center"} justifyContent={'space-around'} w="50%" m="auto">
@@ -77,7 +78,7 @@ useEffect(()=>{
                        </Flex>
                         <Text fontWeight={"medium"} mt="8px" fontSize={{base:"13px", md:"14px", lg:"15px"}} color={"green"}>Max {item.discount} % Off</Text>
                     </Box>
-        
+        </NavLink>
          ))
        }
      </Carousel> 
